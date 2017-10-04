@@ -12,6 +12,7 @@ namespace Ex10_OrangeTree
 
         public OrangeTree(int age, int height)
         {
+            // Sets the age and height, and makes sure that the tree is alive. 
             this.age = age;
             this.height = height;
             this.treeAlive = true;
@@ -62,11 +63,15 @@ namespace Ex10_OrangeTree
 
         internal void OneYearPasses()
         {
+            // age the tree and increase the height
             age++;
             height = height + 2;
+            // If the tree is at least 80 years old, it is now dead.
             if (age >= 80) {
                 treeAlive = false;
             }
+            // Make sure that the tree has fruit if it's old enough. 
+            // Fruit from last year doesn't carry over. 
             if (age > 1) {
                 NumOranges = (age-1) * 5;
             }
@@ -74,6 +79,7 @@ namespace Ex10_OrangeTree
 
         internal void EatOrange(int v)
         {
+            // Make sure there's enough fruit, otherwise throw an exception
             if (v > NumOranges) {
                 throw new IndexOutOfRangeException();
             } else {
